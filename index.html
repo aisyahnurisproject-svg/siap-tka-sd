@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Siap TKA SD — Persiapan Tes Kemampuan Akademik</title>
+  <meta name="description" content="Aplikasi pendamping belajar dan latihan soal persiapan TKA SD: diagnostik, latihan harian, try out, dan analisis untuk guru.">
+  <meta name="theme-color" content="#1D63D3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D63D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10 12 5 2 10l10 5 10-5z'/%3E%3Cpath d='M6 12v5c3 3 9 3 12 0v-5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- =============== LOGIN =============== -->
+    <section id="view-login" class="hidden">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-logo" data-icon="graduation"></div>
+          <div>
+            <div class="brand-name">Siap TKA SD <span class="chip js-ta">—</span></div>
+            <div class="brand-sub js-sekolah">Platform persiapan Tes Kemampuan Akademik</div>
+          </div>
+        </div>
+        <button class="btn" type="button" id="btn-bantuan-login"><span data-icon="help"></span><span class="hide-sm">Bantuan</span></button>
+      </header>
+
+      <div class="statusbar">
+        <div class="row"><span class="status-dot" id="srv-dot"></span><b>Status Server:</b> <span class="chip chip-gray" id="srv-text">Memeriksa…</span></div>
+        <div class="row muted"><span data-icon="refresh"></span><span class="hide-sm">Tersambung ke Google Sheets</span><span data-icon="clock"></span><span id="jam">--.--</span> WIB</div>
+      </div>
+
+      <main class="login-main">
+        <!-- Hero kiri: berubah sesuai tab -->
+        <div class="hero" id="hero-siswa">
+          <span class="chip"><span data-icon="shield"></span> Terhubung Google Sheets &amp; Apps Script</span>
+          <div>
+            <h1><span class="js-sapa">Semangat Pagi</span>, <em>Sahabat Juara!</em></h1>
+            <p class="hero-lead mt-1">Selamat datang di latihan TKA SD. Kerjakan soal dengan tenang, teliti, dan percaya diri.</p>
+          </div>
+          <div class="hero-art">
+            <svg viewBox="0 0 560 250" role="img" aria-label="Ilustrasi meja belajar dengan buku dan laptop">
+              <rect width="560" height="250" fill="#E3EEFF"/>
+              <circle cx="470" cy="60" r="34" fill="#FFE4B5"/>
+              <g fill="#fff" opacity=".9"><rect x="40" y="30" width="120" height="70" rx="10"/><rect x="58" y="48" width="84" height="8" rx="4" fill="#C7D9FF"/><rect x="58" y="64" width="60" height="8" rx="4" fill="#C7D9FF"/><rect x="58" y="80" width="70" height="8" rx="4" fill="#C7D9FF"/></g>
+              <rect x="0" y="182" width="560" height="68" fill="#F6E7D4"/>
+              <rect x="70" y="170" width="420" height="14" rx="7" fill="#D9A877"/>
+              <g transform="translate(220 96)"><rect width="150" height="78" rx="8" fill="#1D63D3"/><rect x="8" y="8" width="134" height="62" rx="4" fill="#fff"/><path d="m56 40 12 12 26-26" stroke="#10B981" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="-14" y="74" width="178" height="8" rx="4" fill="#0B3E8F"/></g>
+              <g transform="translate(96 132)"><path d="M0 8 C30 0 52 4 64 10 L64 40 C52 34 30 30 0 38Z" fill="#fff" stroke="#9DB8EA" stroke-width="2"/><path d="M128 8 C98 0 76 4 64 10 L64 40 C76 34 98 30 128 38Z" fill="#fff" stroke="#9DB8EA" stroke-width="2"/></g>
+              <g transform="translate(400 120) rotate(-20)"><rect width="60" height="10" rx="3" fill="#F59E0B"/><path d="M60 0 L72 5 L60 10Z" fill="#F6E7D4"/><rect x="-8" width="8" height="10" rx="2" fill="#EF4444"/></g>
+              <g fill="#F59E0B"><path d="M190 40l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/><path d="M380 30l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" opacity=".8"/></g>
+              <g fill="#10B981" opacity=".85"><circle cx="520" cy="150" r="20"/><rect x="516" y="160" width="8" height="24"/></g>
+            </svg>
+            <div class="caption"><span class="row"><span data-icon="smile"></span>Belajar bertahap, siap TKA</span><span class="muted">Fase B–C • Kelas 4–6</span></div>
+          </div>
+          <div class="tips">
+            <b class="row"><span data-icon="bulb" style="color:var(--doubt)"></span>Tips Ceria Sebelum Mulai:</b>
+            <ul>
+              <li><span data-icon="idcard"></span><span><b>Siapkan kartu login:</b> pastikan NISN/nama pengguna dan kode siswa ada di dekatmu.</span></li>
+              <li><span data-icon="heart"></span><span><b>Berdoa sebelum mengerjakan:</b> tarik napas santai agar pikiran tenang dan jernih.</span></li>
+              <li><span data-icon="book"></span><span><b>Teliti membaca wacana:</b> cermati setiap cerita dan gambar sebelum memilih jawaban.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero hidden" id="hero-guru">
+          <span class="chip">Portal Guru &amp; Proktor</span>
+          <div>
+            <h1>Pusat Kendali Asesmen &amp; Diagnostik Pembelajaran SD</h1>
+            <p class="hero-lead mt-1">Pantau kesiapan murid, temukan kompetensi yang belum dikuasai, dan berikan latihan yang tepat — dalam satu layar.</p>
+          </div>
+          <div class="feat-grid">
+            <div class="feat"><div class="icon-bubble" data-icon="activity"></div><div><b>Pantau Sesi Real-time</b><span>Status pengerjaan murid saat try out berlangsung.</span></div></div>
+            <div class="feat"><div class="icon-bubble green" data-icon="split"></div><div><b>Diferensiasi Otomatis</b><span>Kelompok Dasar, Cakap, Mahir dari hasil diagnostik.</span></div></div>
+            <div class="feat"><div class="icon-bubble" data-icon="database"></div><div><b>Bank Soal Terhubung</b><span>Soal, stimulus, dan gambar tersimpan di Sheets &amp; Drive.</span></div></div>
+            <div class="feat"><div class="icon-bubble amber" data-icon="file"></div><div><b>Laporan PDF</b><span>Rapor diagnostik per siswa &amp; kelas siap cetak.</span></div></div>
+          </div>
+          <div class="row muted small"><span data-icon="lock"></span>Kata sandi tersimpan dengan hash + salt. Siswa hanya melihat datanya sendiri.</div>
+        </div>
+
+        <!-- Kartu login -->
+        <div class="login-card">
+          <div class="seg" role="tablist">
+            <button type="button" class="on" data-tab="siswa" role="tab"><span data-icon="graduation"></span>Siswa SD</button>
+            <button type="button" data-tab="guru" role="tab"><span data-icon="laptop"></span>Guru &amp; Proktor</button>
+          </div>
+
+          <form id="form-siswa" autocomplete="off" novalidate>
+            <div class="login-head">
+              <div class="icon-bubble" data-icon="smile"></div>
+              <h2>Masuk Ruang Belajar</h2>
+              <p class="muted">Ketik NISN/nama pengguna dan kode siswa, atau pindai kartu.</p>
+            </div>
+            <div class="field">
+              <label for="s-user">NISN / Nama Pengguna <span class="muted small" style="font-weight:500">Contoh: 0124859011</span></label>
+              <div class="input-icon"><span data-icon="idcard"></span><input class="input input-xl" id="s-user" inputmode="text" autocapitalize="off" placeholder="Masukkan NISN atau nama pengguna"></div>
+            </div>
+            <div class="field">
+              <label for="s-kode">Kode Siswa <span class="chip">Dari guru kelas</span></label>
+              <div class="input-icon"><span data-icon="key"></span><input class="input input-xl mono" id="s-kode" autocapitalize="characters" placeholder="Misal: TKA-1234"></div>
+            </div>
+            <div class="row between">
+              <label class="check"><input type="checkbox" id="s-ingat" checked> Ingat akun di komputer ini</label>
+            </div>
+            <div class="form-error hidden" id="s-err"></div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Mulai Belajar &amp; Latihan <span data-icon="rocket"></span></button>
+            <div class="divider">Atau cara mudah</div>
+            <button class="btn btn-lg btn-block" type="button" id="btn-scan"><span data-icon="qr"></span>Pindai Kode QR Kartu</button>
+            <div class="helpbox">
+              <div class="icon-bubble" data-icon="help"></div>
+              <div><b style="color:var(--primary-dark)">Lupa Kode Siswa?</b><br>Jangan khawatir ya! Angkat tanganmu dan hubungi <b>guru kelas</b> untuk mencetak ulang kartu.</div>
+            </div>
+          </form>
+
+          <form id="form-guru" class="hidden" autocomplete="on" novalidate>
+            <div class="row between">
+              <div>
+                <h2 style="font-size:1.5rem">Masuk Portal Pendidik</h2>
+                <p class="muted small mt-1">Gunakan akun yang dibuat oleh pengelola aplikasi sekolah.</p>
+              </div>
+              <span class="chip">Guru • Proktor</span>
+            </div>
+            <div class="field">
+              <label for="g-user">Nama Pengguna</label>
+              <div class="input-icon"><span data-icon="user"></span><input class="input input-xl" id="g-user" autocomplete="username" placeholder="misal: guru"></div>
+            </div>
+            <div class="field">
+              <label for="g-pass">Kata Sandi <a href="#" id="lupa-sandi" class="small">Lupa kata sandi?</a></label>
+              <div class="input-icon rel"><span data-icon="key"></span><input class="input input-xl" id="g-pass" type="password" autocomplete="current-password" placeholder="Masukkan kata sandi"><button type="button" class="btn btn-ghost btn-icon" id="toggle-pass" style="position:absolute;right:.6rem;top:50%;transform:translateY(-50%)" aria-label="Tampilkan kata sandi"><span data-icon="eye"></span></button></div>
+            </div>
+            <label class="check"><input type="checkbox" id="g-ingat"> Ingat sesi di perangkat ini</label>
+            <div class="form-error hidden" id="g-err"></div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Masuk ke Dashboard Guru <span data-icon="chevron-right"></span></button>
+            <div class="row between small"><span class="row muted"><span data-icon="shield"></span>Sesi otomatis berakhir bila tidak aktif</span></div>
+          </form>
+        </div>
+      </main>
+      <footer class="footer">
+        <span class="row"><span data-icon="cloud"></span>Siap TKA SD • Google Apps Script + GitHub Pages</span>
+        <span>Dikelola oleh sekolah untuk kebutuhan belajar internal.</span>
+      </footer>
+    </section>
+
+    <!-- =============== SISWA =============== -->
+    <section id="view-siswa" class="hidden">
+      <header class="s-header">
+        <div class="s-header-top">
+          <div class="brand">
+            <div class="brand-logo" data-icon="graduation"></div>
+            <div>
+              <div class="brand-name">Siap TKA SD</div>
+              <div class="brand-sub js-sekolah">—</div>
+            </div>
+          </div>
+          <div class="who-pill"><span data-icon="shield"></span><div><b class="js-nama">—</b><span class="js-kelas">—</span></div></div>
+          <div class="row">
+            <div class="fontctl" data-fontctl></div>
+            <button class="btn btn-white btn-sm hide-sm" type="button" data-bantuan><span data-icon="help"></span>Bantuan</button>
+            <div class="rel">
+              <button class="avatar-btn js-initial" type="button" data-usermenu>—</button>
+            </div>
+          </div>
+        </div>
+        <nav class="s-nav" id="s-nav"></nav>
+      </header>
+      <main class="s-main" id="s-main"></main>
+    </section>
+
+    <!-- =============== UJIAN =============== -->
+    <section id="view-ujian" class="hidden"></section>
+
+    <!-- =============== GURU =============== -->
+    <section id="view-guru" class="hidden">
+      <div class="g-shell">
+        <aside class="g-side" id="g-side">
+          <div class="brand">
+            <div class="brand-logo" data-icon="graduation"></div>
+            <div class="brand-name"><span>Panel</span><span>Pendidik</span></div>
+          </div>
+          <nav class="g-nav" id="g-nav"></nav>
+          <div class="me"><div class="avatar js-initial">—</div><div><b class="js-nama">—</b><span class="muted js-sekolah">—</span></div></div>
+        </aside>
+        <div>
+          <header class="g-top">
+            <div class="row">
+              <button class="btn btn-white btn-icon btn-sm g-hamburger" type="button" id="g-menu" aria-label="Menu"><span data-icon="menu"></span></button>
+              <h2>Pusat Kendali Asesmen SD <span class="ta js-ta">—</span></h2>
+            </div>
+            <div class="row">
+              <div class="fontctl" data-fontctl></div>
+              <button class="btn btn-white btn-sm" type="button" id="g-sync"><span data-icon="refresh"></span><span class="hide-sm">Muat Ulang</span></button>
+              <div class="rel"><button class="avatar-btn js-initial" type="button" data-usermenu>—</button></div>
+            </div>
+          </header>
+          <main class="g-main" id="g-main"></main>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="loader hidden" id="loader"><div class="spinner"></div></div>
+  <div id="print-area"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ujian.js"></script>
+  <script src="js/siswa.js"></script>
+  <script src="js/guru.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
